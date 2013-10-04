@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hot or Cold Game</title>
+	<link rel="stylesheet" type="text/css" href="hotcold.css">
+	<script type="text/javascript" src="hotcold.js"></script>
+</head>
+<body>
+
+
+<div id="wrapper">
+
+	<div class="header">
+		<img src="images/Hot_or_Cold.jpg" />
+		<p>by Fahrudin Spiodic</p>
+		<hr>
+		<p>Type in a number between 1 and 100 end press Enter</p>
+	</div>
+
+	<div class="entry">
+
+		<input id="field" type="text" name="number" maxlength="2" placeholder="x">  <button class="enter" onclick="processNumber()">ENTER</button>
+
+	</div>
+
+	<div id="feedback">
+		<p id="prevPick"></p>
+		<p id="hint"></p>
+
+	</div>
+
+</div>
+
+</body>
+</html>
