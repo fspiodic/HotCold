@@ -1,46 +1,50 @@
 
-var computerPickedNumber = Math.floor(Math.random() * 100);
+var computerPickedNumber = function() {
 
-
-var getHint = function(cPick, uPick) {
-
-	var response = "";
-
-	if (userPick == computerPickedNumber) {
-		response = "You got it!";
-		return
-	}
-
-	if (Math.abs(cPick - uPick) < 10) {
-		
-		response += "Warmer. "
-		
-		if (uPick < cPick) {
-			response += "Hint: go higher";
-		} else {
-			response += "Hint: go lower";
-		}
-
-	} else {
-		response = "Too Cold";
-	}
-	return response;
-
+	var number = Math.floor(Math.random() * 100);
+	return number;
 }
 
 
-var processNumber = function () {
-
-	var userPick = document.getElementById("field").value;
-	var response = getHint(computerPickedNumber, userPick);
-
-	document.getElementById("prevPick").innerHTML += userPick + " ";	
-	
-	document.getElementById("hint").innerHTML = response;
-
-};
+window.onload = computerPickedNumber();
 
 
+
+var userPickedNumber = function() {
+
+	var number = document.getElementById("field").value;
+	document.getElementById("prevPick").innerHTML += number + " ";
+}
+
+
+
+var compareNumbers = function() {
+
+	var cPick = computerPickedNumber();
+	var uPick = userPickedNumber();
+
+	if (cPick == uPick) {
+		document.getElementById("hint").innerHTML = uPick + "IS CORRECT!!!";
+	}
+
+	else if (cPick < uPick && cPick + 10 > uPick) {
+		document.getElementById("hint").innerHTML = "Warmer. Go lower.";
+	}
+
+	else if (cPick > uPick && cPick - 10 < uPick) {
+		document.getElementById("hint").innerHTML = "Warmer. Go higher.";
+	}
+	else {
+		document.getElementById("hint").innerHTML = "Too cold. Try again.";
+	}
+}
+
+
+
+document.getElementById("enter").onclick = userPickedNumber();
+document.getElementById("enter").onclick = compareNumbers();
+
+document.getElementById("new-game").onclick = computerPickedNumber();
 
 
 

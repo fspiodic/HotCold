@@ -48,7 +48,7 @@ input[type="text"] {
 }
 
 
-button.enter {
+#enter {
 	outline: none;
 	border: 1px solid Red;
 	background-color: Red;
@@ -59,10 +59,29 @@ button.enter {
 	height: 64px;
 }
 
-#feedback {
+#prevPick {
 	text-align: center;
 	font-family: Arial, sans-serif;
 	font-size: 40px;
 	color: #58595b;
+}
+
+#hint {
+	text-align: center;
+	font-family: Arial, sans-serif;
+	font-size: 16px;
+	color: Red;
+}
+
+#new-game {
+	outline: none;
+	border: 1px solid #000;
+	background-color: #000;
+	color: #fff;
+	font-family: Arial, sans-serif;
+	font-size: 16px;
+	padding: 10px;
+	margin: 10px auto;
+	display: block;
 }
 
