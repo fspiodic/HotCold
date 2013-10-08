@@ -1,36 +1,53 @@
+var randomNumber;
+var userNumber;
+
 
 var computerPickedNumber = function() {
-
-	var number = Math.floor(Math.random() * 100);
+	randomNumber = Math.floor(Math.random() * 100);
 	document.getElementById("prevPick").innerHTML = "";
 	document.getElementById("hint").innerHTML = "";
 	document.getElementById("field").value = "";
-	return number;
+	console.log("in computerPickedNumber is " + randomNumber);
+
 }
 
 
 var userPickedNumber = function() {
-
-	var number = document.getElementById("field").value;
-	document.getElementById("prevPick").innerHTML += number + " ";
-	if ( number = NaN ) {
-		alert(number + " is not a number");
-	};
+	console.log("in userPickedNumber");
+	userNumber = document.getElementById("field").value;
 	
+	if ( isNaN(userNumber)) {
+		alert(userNumber + " is not a number");
+		document.getElementById("prevPick").innerHTML += " ";
+	}
+	else {
+		document.getElementById("prevPick").innerHTML += userNumber + " ";
+	}
+	
+
+}
+
+function pressEnter(enter) {
+    if (enter.keyCode === 13) {
+        var enteredNumber = document.getElementById("field").value;
+        document.getElementById("prevPick").innerHTML += userNumber + " ";
+    }
 }
 
 
 var compareNumbers = function() {
 
-	if (computerPickedNumber == userPickedNumber) {
-		document.getElementById("hint").innerHTML = userPickedNumber + "IS CORRECT!!!";
+	userPickedNumber();
+
+	if (randomNumber == userNumber) {
+		document.getElementById("hint").innerHTML = userNumber + " IS CORRECT!!!";
 	}
 
-	else if (computerPickedNumber < userPickedNumber && computerPickedNumber + 10 > userPickedNumber) {
+	else if (randomNumber < userNumber && randomNumber + 10 > userNumber) {
 		document.getElementById("hint").innerHTML = "Warmer. Go lower.";
 	}
 
-	else if (computerPickedNumber > userPickedNumber && computerPickedNumber - 10 < userPickedNumber) {
+	else if (randomNumber > userNumber && randomNumber - 10 < userNumber) {
 		document.getElementById("hint").innerHTML = "Warmer. Go higher.";
 	}
 	else {
@@ -38,13 +55,20 @@ var compareNumbers = function() {
 	}
 }
 
-
-
-window.onload = computerPickedNumber();
+computerPickedNumber();
 
 document.getElementById("enter").addEventListener("click", compareNumbers, false);
 
 document.getElementById("new-game").addEventListener("click", computerPickedNumber, false);
+
+$('#field').keypress(function (e)
+{
+    if(e.keyCode==13)
+    {
+        compareNumbers();
+        document.getElementById("field").value = "";
+    }
+});
 
 
 
