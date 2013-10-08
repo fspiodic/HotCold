@@ -3,7 +3,7 @@
 <head>
 	<title>Hot or Cold Game</title>
 	<link rel="stylesheet" type="text/css" href="hotcold.css">
-	<script type="text/javascript" src="hotcold.js"></script>
+
 </head>
 <body>
 
@@ -19,18 +19,22 @@
 
 	<div class="entry">
 
-		<input id="field" type="text" name="number" maxlength="2">  <button id="enter" >ENTER</button>
+		<input id="field" type="text" name="number" maxlength="2">  <button id="enter" onclick="userPickedNumber()" >ENTER</button>
 
 	</div>
 
 	<div id="feedback">
 		<p id="prevPick"></p>
 		<p id="hint"></p>
-		<button id="new-game" >START NEW GAME</button>
+		<button id="new-game">START NEW GAME</button>
 
 	</div>
 
 </div>
 
+
+
 </body>
+
+	<script type="text/javascript" src="hotcold.js"></script>
 </html>

@@ -2,36 +2,35 @@
 var computerPickedNumber = function() {
 
 	var number = Math.floor(Math.random() * 100);
+	document.getElementById("prevPick").innerHTML = "";
+	document.getElementById("hint").innerHTML = "";
+	document.getElementById("field").value = "";
 	return number;
 }
-
-
-window.onload = computerPickedNumber();
-
 
 
 var userPickedNumber = function() {
 
 	var number = document.getElementById("field").value;
 	document.getElementById("prevPick").innerHTML += number + " ";
+	if ( number = NaN ) {
+		alert(number + " is not a number");
+	};
+	
 }
-
 
 
 var compareNumbers = function() {
 
-	var cPick = computerPickedNumber();
-	var uPick = userPickedNumber();
-
-	if (cPick == uPick) {
-		document.getElementById("hint").innerHTML = uPick + "IS CORRECT!!!";
+	if (computerPickedNumber == userPickedNumber) {
+		document.getElementById("hint").innerHTML = userPickedNumber + "IS CORRECT!!!";
 	}
 
-	else if (cPick < uPick && cPick + 10 > uPick) {
+	else if (computerPickedNumber < userPickedNumber && computerPickedNumber + 10 > userPickedNumber) {
 		document.getElementById("hint").innerHTML = "Warmer. Go lower.";
 	}
 
-	else if (cPick > uPick && cPick - 10 < uPick) {
+	else if (computerPickedNumber > userPickedNumber && computerPickedNumber - 10 < userPickedNumber) {
 		document.getElementById("hint").innerHTML = "Warmer. Go higher.";
 	}
 	else {
@@ -41,10 +40,11 @@ var compareNumbers = function() {
 
 
 
-document.getElementById("enter").onclick = userPickedNumber();
-document.getElementById("enter").onclick = compareNumbers();
+window.onload = computerPickedNumber();
 
-document.getElementById("new-game").onclick = computerPickedNumber();
+document.getElementById("enter").addEventListener("click", compareNumbers, false);
+
+document.getElementById("new-game").addEventListener("click", computerPickedNumber, false);
 
 
 
